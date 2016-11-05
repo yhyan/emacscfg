@@ -1,11 +1,8 @@
-
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
-
 (when (not package-archive-contents)
   (package-refresh-contents))
-
 (defvar myPackages
   '(better-defaults
     auto-complete
@@ -116,14 +113,14 @@ This function is only necessary in window system."
   (delete-region (region-beginning) (region-end)))
 
 ;; bind CMD+C to pasteboard-copy
-(global-set-key [f8] 'pasteboard-copy)
+;;(global-set-key [f8] 'pasteboard-copy)
 ;; bind CMD+V to pasteboard-paste
-(global-set-key [f9] 'pasteboard-paste)
+;;(global-set-key [f9] 'pasteboard-paste)
 ;; bind CMD+X to pasteboard-cut
-(global-set-key (kbd "s-x") 'pasteboard-cut)
+;;(global-set-key (kbd "s-x") 'pasteboard-cut)
 
-;;(global-set-key [f8] 'copy-to-clipboard)
-;;(global-set-key [f9] 'paste-from-clipboard)
+(global-set-key [f8] 'copy-to-clipboard)
+(global-set-key [f9] 'paste-from-clipboard)
 
 
 (setq column-number-mode t)
@@ -136,8 +133,6 @@ This function is only necessary in window system."
 
 (require 'window-numbering)
 (window-numbering-mode 1)
-
-
 
 (require 'auto-complete-config)
 (ac-config-default)
@@ -156,8 +151,6 @@ This function is only necessary in window system."
 (global-set-key [f3] 'hs-show-all)
 
 (define-coding-system-alias 'UTF-8 'utf-8)
-
-
 
 (defun indent-whole ()
   "Indent the whole buffer."
