@@ -8,6 +8,8 @@
 
 (defvar myPackages
   '(better-defaults
+    auto-complete
+    window-numbering
     sr-speedbar
     elpy
     flycheck
@@ -132,14 +134,12 @@ This function is only necessary in window system."
 (setq linum-format "%4d \u2502")
 (add-hook 'prog-mode-hook 'linum-mode)
 
-(add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'window-numbering)
 (window-numbering-mode 1)
 
 
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
+
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
 
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
