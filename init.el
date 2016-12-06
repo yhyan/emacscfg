@@ -1,15 +1,17 @@
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
+
 (when (not package-archive-contents)
   (package-refresh-contents))
+
 (defvar myPackages
   '(better-defaults
-    auto-complete
-    window-numbering
     sr-speedbar
     elpy
     flycheck
+    org
     yasnippet
     material-theme
     py-autopep8))
@@ -28,9 +30,10 @@
 ;;(elpy-enable)  ;; 启用elpy
 ;;(elpy-use-ipython)
 
+
 ;; 先不启用pep8 保存
 (require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)  ;; pep8 保存
+;;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)  ;; pep8 保存
 
 ;;(add-hook 'after-init-hook #'global-flycheck-mode)  ;; enable flycheck
 
@@ -113,14 +116,14 @@ This function is only necessary in window system."
   (delete-region (region-beginning) (region-end)))
 
 ;; bind CMD+C to pasteboard-copy
-;;(global-set-key [f8] 'pasteboard-copy)
+(global-set-key [f8] 'pasteboard-copy)
 ;; bind CMD+V to pasteboard-paste
-;;(global-set-key [f9] 'pasteboard-paste)
+(global-set-key [f9] 'pasteboard-paste)
 ;; bind CMD+X to pasteboard-cut
-;;(global-set-key (kbd "s-x") 'pasteboard-cut)
+(global-set-key (kbd "s-x") 'pasteboard-cut)
 
-(global-set-key [f8] 'copy-to-clipboard)
-(global-set-key [f9] 'paste-from-clipboard)
+;;(global-set-key [f8] 'copy-to-clipboard)
+;;(global-set-key [f9] 'paste-from-clipboard)
 
 
 (setq column-number-mode t)
@@ -131,10 +134,14 @@ This function is only necessary in window system."
 (setq linum-format "%4d \u2502")
 (add-hook 'prog-mode-hook 'linum-mode)
 
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'window-numbering)
 (window-numbering-mode 1)
 
+
+(add-to-list 'load-path "~/.emacs.d/auto-complete")
 (require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
 
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
@@ -151,6 +158,8 @@ This function is only necessary in window system."
 (global-set-key [f3] 'hs-show-all)
 
 (define-coding-system-alias 'UTF-8 'utf-8)
+
+
 
 (defun indent-whole ()
   "Indent the whole buffer."
