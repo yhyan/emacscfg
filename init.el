@@ -1,7 +1,10 @@
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;; -*- emacs-lisp -*-
 (package-initialize)
+
 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -11,10 +14,12 @@
     sr-speedbar
     elpy
     flycheck
-    org
     yasnippet
     material-theme
-    py-autopep8))
+    py-autopep8
+    org
+    auto-complete
+    ))
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
@@ -63,6 +68,8 @@
 (setq inhibit-startup-buffer-menu t)
 ;; Show only one active window when opening multiple files at the same time.
 (add-hook 'window-setup-hook 'delete-other-windows)
+
+
 
 (defun copy-to-clipboard ()
   (interactive)
@@ -134,14 +141,10 @@ This function is only necessary in window system."
 (setq linum-format "%4d \u2502")
 (add-hook 'prog-mode-hook 'linum-mode)
 
-(add-to-list 'load-path "~/.emacs.d/lisp")
-(require 'window-numbering)
-(window-numbering-mode 1)
+;(add-to-list 'load-path "~/.emacs.d/lisp")
+;(require 'window-numbering)
+;(window-numbering-mode 1)
 
-
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
 
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
@@ -173,3 +176,4 @@ This function is only necessary in window system."
 (setq delete-trailing-lines nil)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(put 'downcase-region 'disabled nil)
