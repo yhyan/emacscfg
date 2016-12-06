@@ -21,12 +21,12 @@
 
 (load-theme 'material t) ;; load material theme
 
-(setq sr-speedbar-width 30)
+;;(setq sr-speedbar-width 30)
 ;;(setq sr-speedbar-right-side nil) ; put on left side
-(sr-speedbar-open) ;; 打开buffer和文件列表窗口
+;;(sr-speedbar-open) ;; 打开buffer和文件列表窗口
 
-(elpy-enable)  ;; 启用elpy
-(elpy-use-ipython)
+;;(elpy-enable)  ;; 启用elpy
+;;(elpy-use-ipython)
 
 ;; 先不启用pep8 保存
 (require 'py-autopep8)
